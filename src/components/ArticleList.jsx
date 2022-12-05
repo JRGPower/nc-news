@@ -7,7 +7,6 @@ const ArticleList = () => {
 
   useEffect(() => {
     getArticles().then((data) => {
-      console.log(data);
       setArticles(data);
     });
   }, []);

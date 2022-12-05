@@ -5,12 +5,7 @@ const newsApi = axios.create({
 });
 
 export const getArticles = () => {
-  return newsApi
-    .get(`/api/articles`)
-    .then((res) => {
-      return res.data.articles;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return newsApi.get(`/api/articles`).then((res) => {
+    return res.data.articles;
+  });
 };
