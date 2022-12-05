@@ -17,3 +17,29 @@
   border-radius: 5px;
   margin: 10px;
 }
+
+#votes-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+  border: 2px solid gray;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid gray;
+}
+
+#comment-form:comment-box {
+  height: 50px;
+}
+
+#comments {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid gray;
+}

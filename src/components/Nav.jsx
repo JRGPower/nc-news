@@ -1,7 +1,15 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
-  return <div>Nav Placeholder</div>;
+  const location = useLocation();
+
+  return location.pathname === "/" ? null : (
+    <nav>
+      <div>Nav Placeholder</div>
+      <Link to="/articles">Back to Articles</Link>
+    </nav>
+  );
 };
 
 export default Nav;
