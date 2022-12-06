@@ -21,3 +21,10 @@ export const getArticleComments = (article_id) => {
     return res.data.comments;
   });
 };
+
+export const patchArticleVotes = (article_id, votes) => {
+  const patchBody = { inc_votes: votes };
+  return newsApi.patch(`/api/articles/${article_id}`, patchBody).then((res) => {
+    return res.data.article;
+  });
+};
