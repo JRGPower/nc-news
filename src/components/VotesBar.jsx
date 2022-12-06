@@ -4,16 +4,47 @@ import { useEffect } from "react";
 import { patchArticleVotes } from "../api";
 
 const VotesBar = ({ article }) => {
-  const [votes, setVotes] = useState();
+  const [votingDisabled, setVotingDisabled] = useState(false);
+  const [votedUp, setVotedUp] = useState(false);
+  const [votedDown, setVotedDown] = useState(false);
 
-  const handleClick = (newVote) => {
-    setVotes(votes + newVote);
-    patchArticleVotes(article.article_id, newVote).then(() => {});
+  let votes = article.votes;
+  if (votedUp) {
+    votes += 1;
+  } else if (votedDown) {
+    votes -= 1;
+  }
+
+  const handleVote = (newVote) => {
+    setVotingDisabled(true);
+
+    if (newVote > 0) {
+      if (votedUp) {
+        newVote *= -1;
+      }
+      setVotedUp((currVotedUp) => {
+        return !currVotedUp;
+      });
+      setVotedDown(false);
+    } else {
+      if (votedDown) {
+        newVote *= -1;
+      }
+      setVotedDown((currVotedDown) => {
+        return !currVotedDown;
+      });
+      setVotedUp(false);
+    }
+
+    patchArticleVotes(article.article_id, newVote).then((patchedArticle) => {
+      if (patchedArticle.votes === article.votes) {
+        setVotedUp(false);
+        setVotedUp(false);
+      }
+    });
+
+    setTimeout(() => setVotingDisabled(false), 400);
   };
-
-  useEffect(() => {
-    setVotes(article.votes);
-  }, [article]);
 
   return (
     <div id="votes-bar">
@@ -22,17 +53,21 @@ const VotesBar = ({ article }) => {
       <p>Votes: {votes} </p>
       <button
         onClick={() => {
-          handleClick(1);
+          handleVote(1);
         }}
+        disabled={votingDisabled}
+        style={{ backgroundColor: votedUp ? "green" : "white" }}
       >
-        add vote
+        vote up
       </button>
       <button
         onClick={() => {
-          handleClick(-1);
+          handleVote(-1);
         }}
+        disabled={votingDisabled}
+        style={{ backgroundColor: votedDown ? "red" : "white" }}
       >
-        remove vote
+        vote down
       </button>
     </div>
   );
