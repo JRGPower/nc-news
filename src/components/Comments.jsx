@@ -20,18 +20,20 @@ const Comments = ({ article_id }) => {
       <button onClick={() => setCommentsView(!commentsView)} disabled={loading}>
         {loading ? "Loading Comments" : "Show / Hide Comments"}
       </button>
-      {commentsView
-        ? comments.map((comment) => {
-            return (
-              <div className="comment" key={comment.comment_id}>
-                <p>{comment.body}</p>
-                <p>Votes: {comment.votes}</p>
-                <p>User: {comment.author}</p>
-                <p>Posted: {new Date(comment.created_at).toUTCString()}</p>
-              </div>
-            );
-          })
-        : null}
+      {!comments ? (
+        <p>No comments here yet, be the first to leave a comment!</p>
+      ) : commentsView ? (
+        comments.map((comment) => {
+          return (
+            <div className="comment" key={comment.comment_id}>
+              <p>{comment.body}</p>
+              <p>Votes: {comment.votes}</p>
+              <p>User: {comment.author}</p>
+              <p>Posted: {new Date(comment.created_at).toUTCString()}</p>
+            </div>
+          );
+        })
+      ) : null}
     </div>
   );
 };
