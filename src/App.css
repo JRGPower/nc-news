@@ -33,13 +33,19 @@
   border: 2px solid gray;
 }
 
-#comment-form:comment-box {
+#comment-box {
   height: 50px;
 }
 
 #comments {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  border: 2px solid gray;
+}
+
+.comment {
+  margin: 5px;
   padding: 10px;
   border: 2px solid gray;
 }
