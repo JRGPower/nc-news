@@ -26,7 +26,7 @@ const Article = () => {
       <p>{article.body}</p>
       <VotesBar votes={votes}></VotesBar>
       <CommentForm></CommentForm>
-      <Comments></Comments>
+      <Comments article_id={article_id}></Comments>
     </div>
   );
 };
