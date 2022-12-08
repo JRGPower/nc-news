@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getArticles } from "../api";
 import { Link, useParams, useLocation } from "react-router-dom";
+import ArticleFilter from "./ArticleFilter";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
@@ -22,6 +23,7 @@ const ArticleList = () => {
 
   return (
     <div id="articlesWrapper">
+      <ArticleFilter></ArticleFilter>
       <h2>ArticleList</h2>
       {articleSearch.topic ? <h2>Topic: {articleSearch.topic} </h2> : null}
       <ul className="article_list">
