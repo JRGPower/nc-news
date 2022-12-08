@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { getArticleComments } from "../api";
+import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [commentsView, setCommentsView] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,28 +13,17 @@ const Comments = ({ article_id }) => {
       setComments(comments);
       setLoading(false);
     });
-  }, []);
+  }, [comments]);
 
   return (
     <div id="comments">
-      <p>Comments List Placeholder</p>
-      <button onClick={() => setCommentsView(!commentsView)} disabled={loading}>
-        {loading ? "Loading Comments" : "Show / Hide Comments"}
-      </button>
-      {!comments ? (
-        <p>No comments here yet, be the first to leave a comment!</p>
-      ) : commentsView ? (
-        comments.map((comment) => {
-          return (
-            <div className="comment" key={comment.comment_id}>
-              <p>{comment.body}</p>
-              <p>Votes: {comment.votes}</p>
-              <p>User: {comment.author}</p>
-              <p>Posted: {new Date(comment.created_at).toUTCString()}</p>
-            </div>
-          );
-        })
-      ) : null}
+      <CommentForm
+        setLoading={setLoading}
+        comments={comments}
+        setComments={setComments}
+        article_id={article_id}
+      ></CommentForm>
+      <CommentList loading={loading} comments={comments}></CommentList>
     </div>
   );
 };

@@ -22,7 +22,6 @@ const Article = () => {
       <h2>{article.title}</h2>
       <p>{article.body}</p>
       <VotesBar article={article}></VotesBar>
-      <CommentForm></CommentForm>
       <Comments article_id={article_id}></Comments>
     </div>
   );
