@@ -4,8 +4,8 @@ const newsApi = axios.create({
   baseURL: "https://lazy-cyan-pike-slip.cyclic.app/",
 });
 
-export const getArticles = () => {
-  return newsApi.get(`/api/articles`).then((res) => {
+export const getArticles = (search) => {
+  return newsApi.get(`/api/articles` + search).then((res) => {
     return res.data.articles;
   });
 };
@@ -29,6 +29,11 @@ export const patchArticleVotes = (article_id, votes) => {
   });
 };
 
+export const getTopics = () => {
+  return newsApi.get("/api/topics").then((res) => {
+    return res.data.topics;
+  });
+  
 export const postComment = (article_id, comment) => {
   const postBody = comment;
   return newsApi
