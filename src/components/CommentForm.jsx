@@ -41,14 +41,15 @@ const CommentForm = ({ setLoading, comments, setComments, article_id }) => {
     postComment(article_id, commentForm)
       .then((comment) => {
         console.log(comment, "");
-        setCommentValidation({
-          posted: true,
-          message: "Comment posted successfully",
-        });
         setCommentForm({
           username: "",
           body: "",
         });
+        setCommentValidation({
+          posted: false,
+          message: "Comment posted successfully",
+        });
+
         setComments((currComments) => {
           return [comment, ...currComments];
         });
