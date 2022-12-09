@@ -10,13 +10,11 @@ const Nav = () => {
   useEffect(() => {
     getTopics().then((topics) => {
       setTopics(topics);
-      console.log(topics);
     });
   }, []);
 
   return location.pathname === "/" ? null : (
     <nav>
-      {/* <div>Nav Placeholder</div> */}
       <Link to="/articles">All Articles</Link>
       {topics.map((topic) => {
         return (
