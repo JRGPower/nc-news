@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { getArticles } from "../api";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ArticleFilter from "./ArticleFilter";
 
 const ArticleList = () => {
+  const [error, setError] = useState({
+    message: "",
+  });
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState("default");
   const [order, setOrder] = useState(1);
-  // const [articleSearch, setArticleSearch] = useState("");
   let location = useLocation();
   const articleSearch = Object.fromEntries(
     new URLSearchParams(location.search)
@@ -23,14 +25,24 @@ const ArticleList = () => {
     } else if (order === "-1") {
       para.order = "desc";
     }
-    if (sortBy != "default") {
+    if (sortBy !== "default") {
       para.sort_by = sortBy;
     }
 
-    getArticles(location.search, para).then((data) => {
-      setArticles(data);
-      setLoading(false);
-    });
+    getArticles(location.search, para)
+      .then((data) => {
+        setArticles(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setLoading(false);
+          setError({
+            message: "No articles with this topic",
+          });
+        }
+        console.log(err);
+      });
   }, [location, sortBy, order]);
 
   return (
@@ -66,6 +78,7 @@ const ArticleList = () => {
             );
           })
         )}
+        {error.message ? <p>{error.message}</p> : null}
       </ul>
     </div>
   );
