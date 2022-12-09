@@ -13,7 +13,7 @@ const Comments = ({ article_id }) => {
       setComments(comments);
       setLoading(false);
     });
-  }, [comments]);
+  }, []);
 
   return (
     <div id="comments">
@@ -23,7 +23,11 @@ const Comments = ({ article_id }) => {
         setComments={setComments}
         article_id={article_id}
       ></CommentForm>
-      <CommentList loading={loading} comments={comments}></CommentList>
+      <CommentList
+        loading={loading}
+        comments={comments}
+        setComments={setComments}
+      ></CommentList>
     </div>
   );
 };

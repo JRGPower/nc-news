@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { getUsers } from "../api";
 import { UserContext } from "../contexts/Contexts";
@@ -26,6 +25,7 @@ const Home = () => {
       if (users.some((user) => user.username === event.target[0].value)) {
         console.log("Username Valid");
         setUser(event.target[0].value);
+        console.log(user);
         navigate("/articles");
       } else {
         setLoginStatus({
@@ -49,7 +49,16 @@ const Home = () => {
         <button type="submit">Login</button>
         {loginStatus.message ? <p>{loginStatus.message}</p> : null}
       </form>
-      <Link to="/articles"> Enter Site</Link>
+      <div id="login_testing">
+        <br />
+        <p>Login Help:</p>
+        <p>
+          Available usernames: tickle122 ,grumpy19, happyamy2016, cooljmessy,
+          weegembump, jessjelly
+        </p>
+        <p>Debug: </p>
+        <Link to="/articles"> Click to enter Site without a username</Link>
+      </div>
     </div>
   );
 };

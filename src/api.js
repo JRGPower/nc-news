@@ -40,6 +40,7 @@ export const postComment = (article_id, comment) => {
   return newsApi
     .post(`/api/articles/${article_id}/comments`, postBody)
     .then((res) => {
+      console.log("api return value", res.data);
       return res.data.comment;
     });
 };
@@ -47,5 +48,12 @@ export const postComment = (article_id, comment) => {
 export const getUsers = () => {
   return newsApi.get("/api/users").then((res) => {
     return res.data.users;
+  });
+};
+
+export const deleteComment = (comment_id) => {
+  console.log("in api delete");
+  return newsApi.delete(`/api/comments/${comment_id}`).then((res) => {
+    return res;
   });
 };
