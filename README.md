@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+As a minimum, I'd make sure to include the following:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# App Description
 
-## Available Scripts
+This app allows users to browse news articles, give up or down votes to the articles, post comments on the articles and read other user's comments.
+The articles can be filtered by topic, sorted by Date, Number of comments or Number of votes.
+The user will receive feedback from styling or messages, based on their interaction with the app, and on the status of the api calls made by their interactions.
 
-In the project directory, you can run:
+## Usernames available for Login:
 
-### `npm start`
+tickle122 ,grumpy19, happyamy2016, cooljmessy, weegembump, jessjelly
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once logged in as a user, the user can delete comments that were posted as that user.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Hosted app Link
 
-### `npm test`
+https://lighthearted-crostata-165bbc.netlify.app/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Local Host
 
-### `npm run build`
+Node Version: v18.8.0.
+To Run the app on local-host with command: npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Back-end api repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://github.com/JRGPower/nc-news-api
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Future features and functions
 
-### `npm run eject`
+Some forms of CSS styling at least a little bit please
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+User Login Authorisation
+User Profile
+Maintain Login state on refresh
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Desktop and mobile mode
+Dark / light mode
+Colour themeing option in user settings
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Pagination of:
+Articles
+Comments
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ability to reply to comments creating comment chains
