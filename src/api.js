@@ -33,7 +33,8 @@ export const getTopics = () => {
   return newsApi.get("/api/topics").then((res) => {
     return res.data.topics;
   });
-  
+};
+
 export const postComment = (article_id, comment) => {
   const postBody = comment;
   return newsApi
