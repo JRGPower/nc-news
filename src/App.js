@@ -7,6 +7,7 @@ import Article from "./components/Article";
 import Home from "./components/Home";
 import { UserContext } from "./contexts/Contexts";
 import { useState } from "react";
+import InvalidUrl from "./components/InvalidUrl";
 
 function App() {
   const [user, setUser] = useState("");
@@ -22,6 +23,7 @@ function App() {
           <Route path="/articles" element={<ArticleList />} />
           <Route path="/articles?topic=topic_id" element={<ArticleList />} />
           <Route path="/articles/:article_id" element={<Article />} />
+          <Route path="*" element={<InvalidUrl />} />
         </Routes>
       </UserContext.Provider>
     </main>
